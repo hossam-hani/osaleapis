@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Models;
+
+use App\Models\Address;
+use App\Models\Customer;
+use App\Models\User;
+use App\Models\Shop;
+use App\Models\OrderItem;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Order extends Model
+{
+    use HasFactory;
+
+    protected $guarded = [];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    
+    public function items()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
+
+}
